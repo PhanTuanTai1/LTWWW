@@ -1,0 +1,23 @@
+﻿@model Bai1.Models.Cal
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<form method="post">
+    <div>
+        Nhap A:@Html.EditorFor(model => model.A) <br />
+        Nhap B:@Html.EditorFor(model => model.B)
+    </div>
+    <div>
+        @Html.RadioButtonFor(model => model.Op, "+") +&nbsp;
+        @Html.RadioButtonFor(model => model.Op, "-") -&nbsp;
+        @Html.RadioButtonFor(model => model.Op, "*") *&nbsp;
+        @Html.RadioButtonFor(model => model.Op, "/") /&nbsp;
+    </div>
+    <div>
+        <input type="submit" value="Thuc Hien" />
+    </div>
+    <div>@ViewBag.KetQua</div>
+</form>
+

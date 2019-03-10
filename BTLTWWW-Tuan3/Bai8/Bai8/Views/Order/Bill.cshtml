@@ -1,0 +1,22 @@
+﻿@model Bai8.Models.DonHang
+@{
+    ViewBag.Title = "Hóa Đơn";
+}
+@section js{}
+<p style="text-align:center;width:30%;margin-top:10px;"><b>HÓA ĐƠN ĐẶT HÀNG</b></p>
+<div style="border:1px solid red;padding:5px;width:30%;">
+    <p><b>Khách hàng:</b><i>@Model.TenKH</i></p>
+    <p><b>Địa chỉ:</b><i>@Model.DiaChi</i></p>
+    <p><b>Mã số thuế:</b><i>@Model.MaSoThue</i></p>
+    <p><b>Đặt các loại bánh sau:</b></p>
+    <table border="1" style="border:double;margin-bottom:10px;">
+        @foreach (Bai8.Models.Pie i in Model.LstPie)
+        {
+            <tr>
+                <td style="width:70%;border-right:double;border-bottom:double;">@i.NamePie</td>
+                <td style="width:100px;text-align:right;border-bottom:double;">@i.SoLuong</td>
+            </tr>
+        }
+    </table>
+</div>
+

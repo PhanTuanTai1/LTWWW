@@ -1,0 +1,22 @@
+﻿@model Bai3.Models.Email
+@{
+    ViewBag.Title = "Send Mail";
+}
+
+<h2>Send Mail</h2>
+
+@using (Html.BeginForm("Send", "SendMail", FormMethod.Post))
+{
+    @Html.LabelFor(model => model.MailFrom, "Form") <br />
+    @Html.TextBoxFor(model => model.MailFrom)    <br />
+    @Html.LabelFor(model => model.PassForm, "Password") <br />
+    @Html.TextBoxFor(model => model.PassForm,new { type="password"})    <br />
+    @Html.LabelFor(model => model.MailSend, "To") <br />
+    @Html.TextBoxFor(model => model.MailSend)    <br />
+    @Html.LabelFor(model => model.Subject, "Subject") <br />
+    @Html.TextBoxFor(model => model.Subject)    <br />
+    @Html.LabelFor(model => model.Content, "Body") <br />
+    @Html.TextBoxFor(model => model.Content)    <br />
+    <input type="submit" value="Send" />
+}
+

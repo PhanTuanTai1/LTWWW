@@ -1,0 +1,21 @@
+﻿@model Bai5.Models.MailAttachment
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Send email with attachment</h2>
+@using (Html.BeginForm("Send", "SendMail", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.LabelFor(model => model.MailSend, "From:")<br />
+    @Html.TextBoxFor(model => model.MailSend, new { style = "width:400px;" })<br />
+    @Html.LabelFor(model => model.MailTo, "To:")<br />
+    @Html.TextBoxFor(model => model.MailTo, new { style = "width:400px;" })<br />
+    @Html.LabelFor(model => model.Subject, "Subject:")<br />
+    @Html.TextBoxFor(model => model.Subject, new { style = "width:400px;" })<br />
+    @Html.LabelFor(model => model.FileAttachment, "Attachment:")<br />
+    @Html.TextBoxFor(model => model.FileAttachment, new { type = "file" })<br />
+    @Html.LabelFor(model => model.Content, "Note:")<br />
+    @Html.TextAreaFor(model => model.Content, new { style = "width:400px;" })<br />
+    <input type="submit" value="Send" />
+}
+

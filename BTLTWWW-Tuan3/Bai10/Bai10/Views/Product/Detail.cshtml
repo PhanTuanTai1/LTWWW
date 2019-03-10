@@ -1,0 +1,17 @@
+﻿@model Bai10.Models.Product
+@{
+    ViewBag.Title = "Details";
+    ViewBag.Img = "../../Img/" + Model.UrlImg;
+}
+@section jquery{}
+<h2>Product Detail</h2>
+<div style="width:100%;display:inline-block;">
+    <img src="@ViewBag.Img" style="width:30%;float:left;" />
+    <ul style="width:70%;float:right;">
+        <li>Product ID: @Model.IdPro</li>
+        <li>Product Name: @Model.Name</li>
+        <li>Unit Price:$ @Model.UnitPrice</li>
+        <li>Image: @Model.UrlImg</li>
+    </ul>
+</div>
+

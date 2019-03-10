@@ -1,0 +1,37 @@
+﻿@model List<Bai6.Models.Hoa>
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/scripts/jquery-1.10.2.js"></script>
+<script>
+    $(function () {
+        
+        $("#lst").change(function () {
+            var url = $(this).children("option:selected").data('url');
+            //alert(url);
+            $.get(url,function(data)
+            {
+                $("#replace").replaceWith(data);
+            })
+        });
+    });
+</script>
+<div style="width:100%;"> 
+    <div style="width:700px;margin:0 auto;text-align:center;">
+        <h2>Xem Album Các Loài Hoa</h2>
+    </div>
+    <div style="width:700px;margin:0 auto;">
+        <div style="width:350px;height:350px;float:left">
+            <select multiple id="lst" style="width:150px;height:150px;">
+                @foreach (Bai6.Models.Hoa i in Model)
+                {
+                    <option data-url="@Url.Action("getImg","Album",new { id=@i.IdHoa})">@i.TenHoa</option>
+                }
+            </select>
+        </div>
+        <div style="width:350px;height:350px;float:right" id="replace">
+                
+        </div>
+    </div>
+</div>
+

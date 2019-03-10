@@ -1,0 +1,122 @@
+﻿@model Bai14.Models.SignUp
+@using CaptchaMvc.HtmlHelpers
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "SignUp", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Username,new { @class="control-label col-md-2"})
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.Username,new { @class="form-control"})
+            
+        </div>
+        <div class="col-md-6" style="height:34px;">
+            @Html.ValidationMessageFor(m => m.Username,"",new { style="line-height:34px;color:red;"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.Password, new { @class = "form-control" ,@type="password"})
+           
+        </div>
+        <div class="col-md-6" style="height:34px;">
+            @Html.ValidationMessageFor(m => m.Password, "", new { style = "line-height:34px;color:red;" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m=>m.ConfirmPW, new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.ConfirmPW, new { @class = "form-control", @type = "password" })
+            @*@Html.ValidationMessageFor(m => m.ConfirmPW)*@
+        </div>
+        <div class="col-md-6" style="height:34px;">
+            @Html.ValidationMessageFor(m => m.ConfirmPW, "", new { style = "line-height:34px;color:red;" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.HoTen, new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.HoTen, new { @class = "form-control" })
+            @*@Html.ValidationMessageFor(m => m.HoTen)*@
+        </div>
+        <div class="col-md-6" style="height:34px;">
+            @Html.ValidationMessageFor(m => m.HoTen, "", new { style = "line-height:34px;color:red;" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.GioiTinh, new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            <label class="radio-inline">@Html.RadioButtonFor(m => m.GioiTinh,"Nam")Nam</label>
+            <label class="radio-inline">@Html.RadioButtonFor(m => m.GioiTinh, "Nữ")Nữ</label>           
+        </div>
+        <div class="col-md-6" style="height:34px;">
+            @Html.ValidationMessageFor(m => m.GioiTinh, "", new { style = "line-height:34px;color:red;" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ThuDienTu, new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.ThuDienTu, new { @class = "form-control" })
+            @*@Html.ValidationMessageFor(m => m.ThuDienTu)*@
+        </div>
+        <div class="col-md-6" style="height:34px;">
+            @Html.ValidationMessageFor(m => m.ThuDienTu, "", new { style = "line-height:34px;color:red;" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Phone, new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+            @*@Html.ValidationMessageFor(m => m.Phone)*@
+        </div>
+        <div class="col-md-6" style="height:34px;">
+            @Html.ValidationMessageFor(m => m.Phone, "", new { style = "line-height:34px;color:red;" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.NgaySinh, new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.NgaySinh, new { @class = "form-control",@type="date"})
+            @*@Html.ValidationMessageFor(m => m.NgaySinh)*@
+        </div>
+        <div class="col-md-6" style="height:34px;">
+            @Html.ValidationMessageFor(m => m.NgaySinh, "", new { style = "line-height:34px;color:red;" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DiaChi, new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control" })
+           @* @Html.ValidationMessageFor(m => m.DiaChi)*@
+        </div>
+        <div class="col-md-6" style="height:34px;">
+            @Html.ValidationMessageFor(m => m.DiaChi, "", new { style = "line-height:34px;color:red;" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Img, new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.Img, new { @class = "form-control" ,@type="file"})
+            @*@Html.ValidationMessageFor(m => m.Img)*@
+        </div>
+        <div class="col-md-6" style="height:34px;">
+            @Html.ValidationMessageFor(m => m.Extend, "", new { style = "line-height:34px;color:red;" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Kết quả của phép tính", new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.MathCaptcha()
+        </div>
+        <div class="col-md-6" style="height:34px;">
+            <p style = "line-height:34px;color:red;" >@ViewBag.Captcha</p>
+        </div>
+    </div>
+    <input type="submit" class="btn btn-default" value="Create"/>
+}

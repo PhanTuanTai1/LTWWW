@@ -1,0 +1,22 @@
+﻿@model List<Bai11.Models.Write>
+<script src="~/scripts/jquery-3.0.0.min.js"></script>
+<script>
+    $(".write").click(function () {
+        var index = $(".write").index(this);
+        //alert(index);
+        var url = $(".write").eq(index).data('url');
+        //alert(url);
+        $.get(url, function (data) {
+            $("#change").replaceWith(data);
+        })
+    })
+</script>
+<div class="col-md-8" id="change">
+    @foreach (var i in Model)
+    {
+        <div style="border:2px dotted powderblue;padding:5px;margin:5px;">
+            <a href="#" data-url="@Url.Action("Detail","Post",new { id=@i.IdWrite})" class="write">Xem chi tiết</a>
+            <p><b style="color:blue;">@i.Title</b><br>@i.ContentSub</p>
+        </div>
+    }
+</div>

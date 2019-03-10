@@ -1,0 +1,73 @@
+﻿@model List<Bai10.Models.Product>
+
+@{
+    ViewBag.Title = "Edit Product";
+}
+<script src="~/scripts/jquery-1.10.2.js"></script>
+@section jquery{
+    <script>
+        $(function () {
+            $("#edit").click(function () {
+                var url = $("#edit").data('url');
+                $.get(url,function(data)
+                {
+                    $("#mbody").replaceWith(data);
+                    $("#modalEdit").modal('show');
+                })
+            });
+        });
+    </script>
+}
+<h2>Edit Product</h2>
+<div class="row">
+    @foreach (Bai10.Models.Product i in Model)
+    {
+        <div class="col-md-3">
+            <table class="table table-bordered" style="height:337px;">
+
+                <thead>
+                    <tr>
+                        <th style="background-color:MintCream;text-align:center;">@i.Name</th>
+                    </tr>
+                </thead>
+
+                <tbody style="text-align:center;vertical-align:central;">
+                    <tr>
+                        <td>
+
+                            <img src="../Img/@i.UrlImg" class="mx-auto d-block img-thumbnail" style="border:0;" />
+
+                        </td>
+                    </tr>
+                </tbody>
+                <tr>
+                    <th style="background-color:MintCream;text-align:center;">
+                        <button class="btn btn-danger" id="edit" data-url="@Url.Action("RenderEdit","Product",new { id = @i.IdPro})">Edit</button>
+                    </th>
+                </tr>
+            </table>
+        </div>
+    }
+</div>
+
+<div class="modal" id="modalEdit" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete Product</h4>
+            </div>
+            <div class="modal-body" id="mbody">
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float:right;">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,24 @@
+﻿@model Bai11.Models.Write
+<script src="~/scripts/jquery-3.0.0.min.js"></script>
+<script>
+    $(function () {
+        $(".type").click(function () {
+            var index = $(".type").index(this);
+            //alert(index);
+            var url = $(".type").eq(index).data('url');
+            //alert(url);
+            $.get(url,function(data)
+            {
+                $("#change").replaceWith(data);
+            })
+        })
+
+    });
+</script>
+<div class="col-md-8" id="change"> 
+    <div style="border:2px dotted powderblue;padding:5px;margin:5px;">
+        <a href="#" data-url="@Url.Action("Detail","Post",new { id=@Model.IdWrite})" class="type">Xem chi tiết</a>
+        <p><b style="color:blue;">@Model.Title</b><br>Nội dung tóm tắt:<br />@Model.ContentSub<br />Nội dung chính:<br />@Model.ContentMain</p>
+        <div class="row"><a href="#" class="col-md-12 type" data-url="@Url.Action("Write","Post",new { id=Model.IdBV})" style="width:100%;text-align:right;">Về trang trước</a></div>
+    </div>  
+</div>

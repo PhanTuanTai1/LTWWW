@@ -1,0 +1,32 @@
+﻿@model List<Bai8.Models.Pie>
+<table>
+    <tr style="text-align:center;">
+        <td>
+            <select style="width:200px;" id="pie">
+                @foreach (Bai8.Models.Pie i in Model)
+                {
+                    <option value="@i.NamePie">@i.NamePie</option>
+                }
+            </select>
+        </td>
+    </tr>
+    <tr style="text-align:center;">
+        <td style="padding:5px;">
+            <label>Số lượng:</label><input type="text" id="sl" /> Cái
+        </td>
+    </tr>
+    <tr style="text-align:center;">
+        <td>
+            <input type="button" id="send" value=">" style="text-align:center;" data-url='@Url.Action("LoadListOrder","Order")'>
+        </td>
+    </tr>
+</table>
+
+
+
+
+
+
+
+
+

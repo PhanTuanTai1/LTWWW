@@ -1,0 +1,44 @@
+﻿@model List<Bai10.Models.Product>
+@{
+    ViewBag.Title = "List Product";
+}
+@section jquery{}
+<h2>List Product</h2>
+
+<div class="row">
+    @foreach (Bai10.Models.Product i in Model)
+    {
+
+        @*<a href="@Url.Action("Detail", "Product", new { id = @i.IdPro })">*@
+        <div class="col-md-3">
+            <table class="table table-bordered" style="height:337px;">
+
+                <thead>
+                    <tr>
+                        <th style="background-color:MintCream;text-align:center;">@i.Name</th>
+                    </tr>
+                </thead>
+
+                <tbody style="text-align:center;vertical-align:central;">
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("Detail", "Product", new { id = @i.IdPro })">
+                                <img src="../Img/@i.UrlImg" class="mx-auto d-block img-thumbnail" style="border:0;" />
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tr>
+                    <th style="background-color:MintCream;">
+                        <span>$ @i.UnitPrice</span>
+                        <a href="#" style="float:right;">Add to Cart</a>
+                    </th>
+                </tr>
+            </table>
+        </div>
+            @*</a>*@
+
+    }
+</div>
+
+

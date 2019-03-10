@@ -1,0 +1,63 @@
+﻿@model Bai8.Models.DonHang
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/scripts/jquery-1.10.2.js"></script>
+
+@section js
+{
+    <script>
+        $(function () {
+            
+            $("#send").click(function()
+            {
+                    if ($("#sl").val() != "" && $("#sl").val() != "0") {
+                        var para = { namePie: $("#pie").val(), soLuong: $("#sl").val() }
+                        var url = $("#send").data('url') + "?" + $.param(para);
+                        $.get(url, function (data) {
+                            $("#listOrder").replaceWith(data);
+                        })
+                    }
+                    else alert("Vui lòng nhập số lượng bánh cần đặt");
+            })
+            $("#form").submit(function (e) {
+                if ($("#txtName").val() != "" && $("#txtDC").val() != "" && $("#txtThue").val() != "") return;
+                else {
+                    alert("Vui lòng nhập thông tin");
+                    e.preventDefault();
+                }
+            })
+        });
+    </script>
+    }
+<h2>ĐƠN ĐẶT HÀNG</h2>
+@using (Html.BeginForm("PrintOrder", "Order", FormMethod.Post, new { @id = "form" }))
+{
+    <div style="width:100%;">
+        <table>
+            <tr>
+                <td style="padding-right:100px;;">@Html.LabelFor(model => model.TenKH, "Khách hàng:")</td>
+                <td>@Html.TextBoxFor(model => model.TenKH, new { @id = "txtName" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.DiaChi, "Địa chỉ:")</td>
+                <td>@Html.TextBoxFor(model => model.DiaChi, new { @id = "txtDC" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.MaSoThue, "Mã số thuế:")</td>
+                <td>@Html.TextBoxFor(model => model.MaSoThue, new { @id = "txtThue" })</td>
+            </tr>
+        </table>
+    </div>
+    <div style="width:30%;float:left;">
+        <p>Chọn các loại bánh sau</p>
+        @{ Html.RenderAction("LoadPie", "Order");}
+    </div>
+    <div style="width:70%;float:right;">
+        <p>Danh sách bánh được đặt</p>
+        @{ Html.RenderAction("LoadListOrder", "Order", new { id = UrlParameter.Optional, namePie = "", soLuong = 0 });}
+    </div>
+    <div style="width:100%;display:inline-block;">
+        <input type="submit" value="In đơn đặt hàng" id="btnSubmit" />
+    </div>
+            }

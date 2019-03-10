@@ -1,0 +1,18 @@
+﻿@model Bai9.Models.Student
+@{
+    ViewBag.Title = "Details";
+    ViewBag.Img = "../Pic/" + Model.PicUrl;
+}
+
+<h2>Student Infomation</h2>
+<div style="width:100%;display:inline-block;">
+    <img src="@ViewBag.Img" style="width:30%;float:left;" />
+    <ul style="width:70%;float:right;">
+        <li>Student ID: @Model.Id</li>
+        <li>Student Name: @Model.Name</li>
+        <li>Birthday: @Model.Birthday</li>
+        <li>Address: @Model.Address</li>
+    </ul>
+</div>
+@Html.ActionLink("Back to Index", "Index")
+

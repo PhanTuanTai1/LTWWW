@@ -1,0 +1,50 @@
+﻿@model Bai4.Models.FileInfomation
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/scripts/jquery-1.10.2.js"></script>
+@section scripts{
+    <script>
+        $(function () {
+            $("#imgul").change(function () {
+                var re = /^\w+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+                var index = $(this).val().toLowerCase().lastIndexOf("\\") + 1;
+                //alert($(this).val().toLowerCase().substr(index));
+                if (re.test($(this).val().toLowerCase().substr(index))) {
+
+                    return;
+                }
+                else {
+                    alert("Sai định dạng hình ảnh");
+                    $(this).val("");
+                    //location.reload();
+                }
+            })
+            $("#docul").change(function () {
+                var re = /^\w+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+                var index = $(this).val().toLowerCase().lastIndexOf("\\") + 1;
+
+                if (re.test($(this).val().toLowerCase().substr(index))) {
+                    alert("Sai định dạng tài liệu");
+                    $(this).val("");
+
+                }
+                else {
+
+                    return;
+                }
+            })
+
+        });
+    </script>
+}
+<h2>Upload File</h2>
+
+@using (Html.BeginForm("Upload", "PostFile", FormMethod.Post, new { enctype= "multipart/form-data" }))
+{
+    @Html.LabelFor(model => model.Img, "Chọn file hình ảnh") <br />
+    @Html.TextBoxFor(model => model.Img, new { type="file",id="imgul"}) <br />
+    @Html.LabelFor(model => model.Document, "Chọn file tài liệu") <br />
+    @Html.TextBoxFor(model => model.Document, new { type = "file",id="docul"}) <br />
+    <input type="submit" value="Upload"/>
+}

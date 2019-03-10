@@ -1,0 +1,9 @@
+﻿@model List<Bai7.Models.ItemVote>
+<div id="votecontent">
+    @foreach (Bai7.Models.ItemVote i in Model)
+    {
+        <input type="checkbox" value="@i.NameVote" class="cb" name="resultvote" />@i.NameVote<br />
+    }
+</div>
+
+

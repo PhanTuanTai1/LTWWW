@@ -1,0 +1,38 @@
+﻿@model Bai10.Models.Product
+
+<div class="modal-body" id="mbody">
+    <form action="/Product/EditProduct" enctype="multipart/form-data" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label for="IdPro" class="control-label col-sm-3">Product ID:</label>
+            <div class="col-sm-9">
+                <input id="IdPro" name="IdPro" type="text" value="@Model.IdPro" class="form-control" hidden>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Name" class="control-label col-sm-3">Product Name:</label>
+            <div class="col-sm-9">
+                <input id="Name" name="Name" type="text" value="@Model.Name" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="UnitPrice" class="control-label col-sm-3">Unit Price:</label>
+            <div class="col-sm-9">
+                <input data-val="true" data-val-number="The field UnitPrice must be a number." data-val-required="The UnitPrice field is required." id="UnitPrice" name="UnitPrice" type="text" value="@Model.UnitPrice" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Img" class="control-label col-sm-3">Product Image:</label>
+            <div class="col-sm-9">
+                <input id="Img" name="Img" type="file" value="" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-default">Save Edit</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+

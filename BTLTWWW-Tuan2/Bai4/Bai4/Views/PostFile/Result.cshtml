@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Result";
+}
+@section scripts{}
+<h2>Result Upload</h2>
+@Html.Label("Hình ảnh")<br />
+<img src="@Href(@ViewBag.Link)" style="width : 100px;height : 100px;" /><br />
+<input type="text" style="visibility:hidden" value="@ViewBag.NameF" name="name" /><br />
+@Html.Label("Tài liệu")<br />
+<ul>
+    <li>Tên file:@ViewBag.NameF</li>
+    <li>Loại file:@ViewBag.TypeF</li>
+    <li>Kích thước file:@ViewBag.SizeF</li>
+    <li>@Html.ActionLink("Download", "Download", "UpLoad", new { id = UrlParameter.Optional, namefile = ViewBag.NameF }, null)</ li >
+</ul>
+

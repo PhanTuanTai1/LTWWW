@@ -1,0 +1,57 @@
+﻿@model List<Bai7.Models.Item>
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/scripts/jquery-1.10.2.js"></script>
+
+    <script>
+        $(function () {
+            $("input[name='render']").change(function () {
+                var content = $("#votecontent");
+                var stringchecked = "<p style='color:red;'>Bạn đã chọn sản phẩm:" + "<b> " + $("input[name='render']:checked").val() + " </b></p>";
+                var val = $("input[name='render']:checked").data('url');
+                $.get(val, function (data) {
+                    //content.removeClass("checkbox");
+                    content.replaceWith(data);
+                    $("#result").replaceWith("<div style='width:70%;float:right;' id='result'></div>");
+                    $(stringchecked).appendTo("#result");
+                })
+            })
+            $("#submitvote").click(function () {
+                var stringresult = "<ol class='listresult'>";
+                $("input[name='resultvote']:checked").each(function(index,element)
+                {
+                    stringresult += "<li>"+$(this).val()+"</li>";
+                    if (index == length - 1) stringresult += "</ol>";
+
+                })
+                $("ol").remove();
+                $(stringresult).appendTo("#result");
+            })
+        });
+    </script>
+
+<h2>PHIẾU LẤY Ý KIẾN NGƯỜI TIÊU DÙNG CỦA HÃNG ABX</h2>
+<div style="width:30%;float:left;">
+    <div style="background:red;color:white;margin-right:3px;">Bạn hãy chọn sản phẩm:</div>
+    @foreach (Bai7.Models.Item i in Model)
+    {
+        <input type="radio" value="@i.Name" data-url='@Url.Action("PartialVote","Vote",new { id = UrlParameter.Optional,id2 = @i.Id})' name="render" />@i.Name<br />
+    }
+</div>
+<div style="width:70%;float:right;">
+    <div style="background:red;color:white;">Các tiêu chuẩn bình chọn:</div>
+    <div id="votecontent">
+
+    </div>
+</div>
+
+<div style="width:100%;display:inline-block;">
+    <hr />
+    <div style="width:30%;float:left;"><input type="button" value="Xem kết quả bình chọn" style="width:100%;" id="submitvote" /></div>
+    <div style="width:70%;float:right;" id="result">
+
+    </div>
+</div>
+
+

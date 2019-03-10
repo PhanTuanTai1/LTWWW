@@ -1,0 +1,26 @@
+﻿@model List<Bai9.Models.Student>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.ActionLink("Create New", "Create")
+<table style="width:100%;">
+    <tr>
+        <th>Student Name</th>
+        <th>Birthday</th>
+        <th>Address</th>
+        <th>Picture</th>
+        <th></th>
+    </tr>
+    @foreach (Bai9.Models.Student i in Model)
+    {
+        <tr>
+            <td style="width:20%;">@i.Name</td>
+            <td style="width:20%;">@i.Birthday.ToString("dd-MM-yyyy")</td>
+            <td style="width:20%;">@i.Address</td>
+            <td style="width:20%;">@i.PicUrl</td>
+            <td style="width:20%;">@Html.ActionLink("Edit", "EditStudent", new { idStudent = @i.Id }, new { style = "border-right:1px solid black;margin:2px;padding:2px;" })@Html.ActionLink("Details", "DetailStudent", new { idStudent = @i.Id }, new { style = "border-right:1px solid black;margin-right:2px;padding-right:2px;" })@Html.ActionLink("Delete", "DeleteStudent", new { idStudent = @i.Id })</td>
+        </tr>
+    }
+</table>

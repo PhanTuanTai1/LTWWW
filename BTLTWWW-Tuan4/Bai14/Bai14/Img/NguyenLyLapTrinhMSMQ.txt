@@ -1,0 +1,15 @@
+﻿Kien truc MSMQ
+1 Tao factory connection : từ IConnectionFactory f = new ConnectionFactory("tcp://ip_address:port");
+2 Tao kết nối từ factory vừa tạo : từ IConnection con = f.CreateConnection("username","password");
+3 Khởi động kết nối vừa tạo: con.Start();
+4 Tạo session từ kết nối vừa khởi động : từ ISession session = con.CreateSession(AcknowledgementMode.AutoAcknowledge);
+5 Tạo đích đến từ session vừa tạo : IDestination des = session.GetQueue("tenQueue"); or session.GetTopic("tenTopic");
+6 Tạo người gửi or người nhận từ session vừa tạo: từ IMessageProducer pro = session.CreateProducer(des);
+						     IMessageConsumer cons = session.CreateConsumer(des);
+7 Tạo tin nhắn cần gửi : từ IMessage msg = new ActiveMQTextMessage(tin nhắn cần gửi dạng string);
+8 Gửi tin nhắn or nhận tin nhắn: pro.Send(msg); or 
+IMessage msg = cons.Receive();
+if(msg is ITextMessage)
+{
+	ITextMessage msg1 = msg as ITextMessage;
+}

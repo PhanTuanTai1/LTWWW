@@ -1,0 +1,8 @@
+﻿@model List<Bai8.Models.Pie>
+
+<select multiple id="listOrder" style="width:100%;height:150px;">
+    @foreach (Bai8.Models.Pie i in Model)
+    {
+        <option>@i.NamePie (@i.SoLuong)</option>
+    }
+</select>

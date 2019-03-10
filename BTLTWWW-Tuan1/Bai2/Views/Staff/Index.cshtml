@@ -1,0 +1,40 @@
+﻿@model Bai2.Models.Staff
+@{
+    ViewBag.Title = "Index";
+    
+}
+<script src="~/scripts/jquery-1.10.2.js"></script>
+@section scripts{
+    <script>
+        $(function () {
+            $("#upload").change(function () {
+                var reader = new FileReader();
+                reader.onload = function(e)
+                {
+                    $("#img").attr("src", e.target.result);
+                }
+                reader.readAsDataURL($(this)[0].files[0]);
+            });
+        });
+    </script>
+}
+<h2>Index</h2>
+<h2>STAFF INFORMATION</h2>
+@using (Html.BeginForm("Save","Staff",FormMethod.Post, new { enctype = "multipart/form-data"}))
+{
+    @Html.ValidationSummary(true)
+    <label>Mã nhân viên:</label><br />
+    @Html.TextBoxFor(model => model.MaNV, new { Value = ""+@ViewBag.ID+""})<br />
+    <label>Tên nhân viên:</label><br />
+    @Html.TextBoxFor(model => model.TenNV, new { Value = ""+@ViewBag.TenNV+"" })<br />
+    <label>Ngày sinh:</label><br />
+    @Html.TextBoxFor(model => model.NgaySinh, new { type ="date" ,Value = ""+@ViewBag.NgaySinh+""})<br />
+    <label>Lương:</label><br />
+    @Html.TextBoxFor(model => model.Luong,new { Value = ""+@ViewBag.Luong+""})<br />
+    <label>Hình ảnh:</label><br />
+    @Html.TextBoxFor(model => model.File1, new { type = "file" ,Value = ""+@ViewBag.HinhAnh+"",id="upload"})<br />
+    <img src="@ViewBag.Img" style="height:100px;width:100px;" id="img"/><br />
+    <input type="submit" value="Save" /> <input type="button" value="Open" onclick="location.href = '@Url.Action("Open","Staff")'"/>
+}
+
+

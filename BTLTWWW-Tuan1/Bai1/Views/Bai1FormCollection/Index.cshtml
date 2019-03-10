@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/scripts/jquery-1.10.2.js"></script>
+@section scripts{
+    <script>
+
+    </script>
+}
+
+<h2>Index</h2>
+<form method="post" action="~/Bai1FormCollection/Index">
+    <div>
+        Nhap A:<input type="text" name="a" />
+    </div>
+    <div>
+        Nhap B:<input type="text" name="b" />
+    </div>
+    <div>
+        <input type="radio" value="+" name="op" />Cong &nbsp;
+        <input type="radio" value="-" name="op" />Tru &nbsp;
+        <input type="radio" value="*" name="op" />Nhan &nbsp;
+        <input type="radio" value="/" name="op" />Chia &nbsp;
+    </div>
+    <div>
+        <input type="submit" value="Thuc Hien" />
+    </div>
+    <div>@ViewBag.KetQua</div>
+</form>
